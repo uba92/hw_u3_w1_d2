@@ -2,7 +2,7 @@ import { Container, Row, Col, Nav } from 'react-bootstrap'
 
 const MyFooter = function (props) {
   return (
-    <Container fluid className='bg-dark text-light'>
+    <Container fluid className='bg-dark text-light text-center'>
       <Row className='justify-content-center align-items-center'>
         <Col sm={12} md={8} lg={4}>
           UmbertoLibrary - 2024
