@@ -5,6 +5,7 @@ import MyFooter from './components/MyFooter'
 import MyWelcomeAlert from './components/MyWelcomeAlert'
 import { Container, Row, Col } from 'react-bootstrap'
 import AllTheBooks from './components/AllTheBooks'
+import MyCarousel from './components/MyCarousel'
 
 function App() {
   return (
@@ -18,6 +19,13 @@ function App() {
           <Row>
             <Col sm={12}>
               <AllTheBooks />
+            </Col>
+          </Row>
+        </Container>
+        <Container className='my-4'>
+          <Row className='justify-content-center'>
+            <Col sm={12} md={6} lg={4}>
+              <MyCarousel />
             </Col>
           </Row>
         </Container>

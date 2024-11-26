@@ -8,9 +8,9 @@ class AllTheBooks extends Component {
     return (
       <Container>
         <Row className='g-3'>
-          {scifiBooks.map((scifiBook) => {
+          {scifiBooks.slice(0, 18).map((scifiBook) => {
             return (
-              <Col sm={12} md={6} lg={4}>
+              <Col sm={12} md={6} lg={4} key={scifiBook.asin}>
                 <Card className='h-100'>
                   <Card.Img
                     variant='top'
