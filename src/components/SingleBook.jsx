@@ -11,6 +11,7 @@ class SingleBook extends Component {
     return (
       <Col sm={12} md={4} lg={3}>
         <Card
+          style={this.state.selected ? { border: '2px solid red' } : null}
           className='h-100'
           onClick={() => this.setState({ selected: !this.state.selected })}
         >
