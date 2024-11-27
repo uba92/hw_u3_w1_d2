@@ -3,9 +3,9 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import MyNavbar from './components/MyNavbar'
 import MyFooter from './components/MyFooter'
 import MyWelcomeAlert from './components/MyWelcomeAlert'
-import { Container, Row, Col } from 'react-bootstrap'
-import AllTheBooks from './components/AllTheBooks'
-import MyCarousel from './components/MyCarousel'
+import { Container, Row } from 'react-bootstrap'
+import BookList from './components/BookList'
+import fantasyBooks from './data/books/fantasy.json'
 
 function App() {
   return (
@@ -17,16 +17,7 @@ function App() {
         <MyWelcomeAlert />
         <Container className='my-4'>
           <Row>
-            <Col sm={12}>
-              <AllTheBooks />
-            </Col>
-          </Row>
-        </Container>
-        <Container className='my-4'>
-          <Row className='justify-content-center'>
-            <Col sm={12} md={6} lg={4}>
-              <MyCarousel />
-            </Col>
+            <BookList Books={fantasyBooks} />
           </Row>
         </Container>
       </main>
