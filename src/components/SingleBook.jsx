@@ -29,7 +29,9 @@ class SingleBook extends Component {
             {this.state.selected && (
               <CommentArea asin={this.props.OneBook.asin} />
             )}
-            <Button variant='primary'>Add Comment</Button>
+            {this.state.selected && (
+              <Button variant='primary'>Add Comment</Button>
+            )}
           </Card.Body>
         </Card>
       </Col>
