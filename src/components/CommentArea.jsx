@@ -24,6 +24,7 @@ class CommentArea extends Component {
         }
       })
       .then((arrayOfComments) => {
+        console.log('Feedbacks: ', arrayOfComments)
         this.setState({
           comments: arrayOfComments,
         })
@@ -38,7 +39,9 @@ class CommentArea extends Component {
   }
 
   render() {
-    return <CommentList feedbacks={this.state.comments} />
+    return (
+      <CommentList asin={this.props.asin} feedbacks={this.state.comments} />
+    )
   }
 }
 

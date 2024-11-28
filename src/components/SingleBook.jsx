@@ -1,21 +1,30 @@
-import { Col, Card, Button, Modal, Form } from 'react-bootstrap'
+import { Col, Card, Button, Modal } from 'react-bootstrap'
 import { Component } from 'react'
 import CommentArea from './CommentArea'
+import AddComment from './AddComment'
 
 class SingleBook extends Component {
   state = {
     selected: false,
     // borderRed: '2px solid red',
     showModal: false,
+    showModal2: false,
+  }
+
+  handleHide = () => {
+    this.setState({ showModal: false })
+  }
+  handleHide2 = () => {
+    this.setState({ showModal2: false })
   }
 
   handleShow = () => {
     this.setState({ showModal: true })
   }
-
-  handleClose = () => {
-    this.setState({ showModal: false })
+  handleShow2 = () => {
+    this.setState({ showModal2: true })
   }
+
   render() {
     return (
       <Col sm={12} md={4} lg={3}>
@@ -23,6 +32,7 @@ class SingleBook extends Component {
           // style={this.state.selected ? { border: this.state.borderRed } : null}
           // className='h-100'
           onClick={() => this.setState({ selected: !this.state.selected })}
+          className='h-100'
         >
           <Card.Img
             variant='top'
@@ -38,26 +48,38 @@ class SingleBook extends Component {
             <Button variant='primary' onClick={this.handleShow}>
               Feedbacks
             </Button>
+            <Button variant='warning' onClick={this.handleShow2}>
+              Leave a Comment
+            </Button>
           </Card.Body>
         </Card>
-        <Modal show={this.state.showModal} onHide={this.handleClose}>
+        <Modal show={this.state.showModal} onHide={this.handleHide}>
           <Modal.Header closeButton>
-            <Modal.Title>Modal Example</Modal.Title>
+            <Modal.Title>Feedbacks</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             {this.state.selected && (
               <CommentArea asin={this.props.OneBook.asin} />
             )}
-            <Form.Control
-              as='textarea'
-              placeholder='Leave a comment here'
-              style={{ height: '100px' }}
-            />
           </Modal.Body>
           <Modal.Footer>
-            <Button variant='warning'>Add Comment</Button>
-            <Button variant='secondary' onClick={this.handleClose}>
+            <Button variant='secondary' onClick={this.handleHide}>
               Chiudi
+            </Button>
+          </Modal.Footer>
+        </Modal>
+
+        {/* modals per lasciare un feedback */}
+        <Modal show={this.state.showModal2} onHide={this.handleHide2} size='lg'>
+          <Modal.Header closeButton>
+            <Modal.Title>Rate Us</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <AddComment selectedBook={this.props.OneBook} />
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant='secondary' onClick={this.handleHide2}>
+              Close
             </Button>
           </Modal.Footer>
         </Modal>
