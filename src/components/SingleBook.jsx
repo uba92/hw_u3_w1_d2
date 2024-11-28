@@ -53,9 +53,9 @@ class SingleBook extends Component {
               placeholder='Leave a comment here'
               style={{ height: '100px' }}
             />
-            <Button variant='warning'>Add Comment</Button>
           </Modal.Body>
           <Modal.Footer>
+            <Button variant='warning'>Add Comment</Button>
             <Button variant='secondary' onClick={this.handleClose}>
               Chiudi
             </Button>
