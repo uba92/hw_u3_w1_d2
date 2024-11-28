@@ -1,18 +1,26 @@
-import { Col, Card, Button } from 'react-bootstrap'
+import { Col, Card, Button, Modal, Form } from 'react-bootstrap'
 import { Component } from 'react'
 import CommentArea from './CommentArea'
 
 class SingleBook extends Component {
   state = {
     selected: false,
-    borderRed: '2px solid red',
+    // borderRed: '2px solid red',
+    showModal: false,
   }
 
+  handleShow = () => {
+    this.setState({ showModal: true })
+  }
+
+  handleClose = () => {
+    this.setState({ showModal: false })
+  }
   render() {
     return (
       <Col sm={12} md={4} lg={3}>
         <Card
-          style={this.state.selected ? { border: this.state.borderRed } : null}
+          // style={this.state.selected ? { border: this.state.borderRed } : null}
           // className='h-100'
           onClick={() => this.setState({ selected: !this.state.selected })}
         >
@@ -26,14 +34,33 @@ class SingleBook extends Component {
               {this.props.OneBook.title}
             </Card.Title>
             <Card.Text>{this.props.OneBook.price} $</Card.Text>
+
+            <Button variant='primary' onClick={this.handleShow}>
+              Feedbacks
+            </Button>
+          </Card.Body>
+        </Card>
+        <Modal show={this.state.showModal} onHide={this.handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Modal Example</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
             {this.state.selected && (
               <CommentArea asin={this.props.OneBook.asin} />
             )}
-            {this.state.selected && (
-              <Button variant='primary'>Add Comment</Button>
-            )}
-          </Card.Body>
-        </Card>
+            <Form.Control
+              as='textarea'
+              placeholder='Leave a comment here'
+              style={{ height: '100px' }}
+            />
+            <Button variant='warning'>Add Comment</Button>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant='secondary' onClick={this.handleClose}>
+              Chiudi
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </Col>
     )
   }
