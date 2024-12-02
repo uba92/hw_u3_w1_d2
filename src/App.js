@@ -36,7 +36,7 @@ class App extends Component {
                   selected={this.state.selected}
                 />
               </Col>
-              <Col xs={4} className='text-center'>
+              <Col xs={4} className='text-center fixed'>
                 <CommentArea asin={this.state.selected} />
               </Col>
             </Row>
