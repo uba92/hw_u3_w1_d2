@@ -1,38 +1,43 @@
-import { Col, Card, Button, Modal } from 'react-bootstrap'
+import { Col, Card, Button } from 'react-bootstrap'
 import { Component } from 'react'
-import CommentArea from './CommentArea'
-import AddComment from './AddComment'
+// import CommentArea from './CommentArea'
+// import AddComment from './AddComment'
 
 class SingleBook extends Component {
-  state = {
-    selected: false,
-    // borderRed: '2px solid red',
-    showModal: false,
-    showModal2: false,
-  }
+  // state = {
+  //   selected: false,
+  // }
 
-  handleHide = () => {
-    this.setState({ showModal: false })
-  }
-  handleHide2 = () => {
-    this.setState({ showModal2: false })
-  }
+  // handleHide = () => {
+  //   this.setState({ showModal: false })
+  // }
+  // handleHide2 = () => {
+  //   this.setState({ showModal2: false })
+  // }
 
-  handleShow = () => {
-    this.setState({ showModal: true })
-  }
-  handleShow2 = () => {
-    this.setState({ showModal2: true })
-  }
+  // handleShow = () => {
+  //   this.setState({ showModal: true })
+  // }
+  // handleShow2 = () => {
+  //   this.setState({ showModal2: true })
+  // }
 
   render() {
     return (
-      <Col sm={12} md={4} lg={3}>
+      <Col xs={12} md={4} lg={3}>
         <Card
-          // style={this.state.selected ? { border: this.state.borderRed } : null}
-          // className='h-100'
-          onClick={() => this.setState({ selected: !this.state.selected })}
+          value={this.props.selected}
+          onClick={() => {
+            this.props.changeSelected(this.props.OneBook.asin)
+            console.log(this.props.selected)
+          }}
+          style={
+            this.props.selected === this.props.OneBook.asin
+              ? { border: '2px solid red' }
+              : null
+          }
           className='h-100'
+          // onClick={() => this.setState({ selected: !this.state.selected })}
         >
           <Card.Img
             variant='top'
@@ -45,15 +50,15 @@ class SingleBook extends Component {
             </Card.Title>
             <Card.Text>{this.props.OneBook.price} $</Card.Text>
 
-            <Button variant='primary' onClick={this.handleShow}>
+            {/* <Button variant='primary' onClick={this.handleShow}>
               Feedbacks
-            </Button>
+            </Button> */}
             <Button variant='warning' onClick={this.handleShow2}>
               Leave a Comment
             </Button>
           </Card.Body>
         </Card>
-        <Modal show={this.state.showModal} onHide={this.handleHide}>
+        {/* <Modal show={this.state.showModal} onHide={this.handleHide}>
           <Modal.Header closeButton>
             <Modal.Title>Feedbacks</Modal.Title>
           </Modal.Header>
@@ -70,7 +75,7 @@ class SingleBook extends Component {
         </Modal>
 
         {/* modals per lasciare un feedback */}
-        <Modal show={this.state.showModal2} onHide={this.handleHide2} size='lg'>
+        {/* <Modal show={this.state.showModal2} onHide={this.handleHide2} size='lg'>
           <Modal.Header closeButton>
             <Modal.Title>Rate Us</Modal.Title>
           </Modal.Header>
@@ -82,7 +87,7 @@ class SingleBook extends Component {
               Close
             </Button>
           </Modal.Footer>
-        </Modal>
+        </Modal>{' '} */}
       </Col>
     )
   }

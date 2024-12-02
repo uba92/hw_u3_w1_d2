@@ -12,12 +12,13 @@ class CommentArea extends Component {
       {
         headers: {
           Authorization:
-            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzM3MDEwMThhZDEyOTAwMTU4NzZiYjUiLCJpYXQiOjE3MzE2NTc5ODUsImV4cCI6MTczMjg2NzU4NX0.NSQnNzM9dxo1zWIq4ud9nziBshRqPm8s2UIO3rZInEs',
+            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzQ4NmYwNTA2ZmM4YzAwMTU2Yjg2ZmIiLCJpYXQiOjE3MzI4MDAyNjIsImV4cCI6MTczNDAwOTg2Mn0.LBzHQxm8Ovl76SSc6dJv3F12CSJnOAhnNlzvhQB2oec',
         },
       }
     )
       .then((response) => {
         if (response.ok) {
+          console.log('id ', this.props.asin)
           return response.json()
         } else {
           throw new Error('Errore nel recupero dei commenti')
@@ -40,7 +41,10 @@ class CommentArea extends Component {
 
   render() {
     return (
-      <CommentList asin={this.props.asin} feedbacks={this.state.comments} />
+      <>
+        <h5>Feedbacks</h5>
+        <CommentList asin={this.props.asin} feedbacks={this.state.comments} />
+      </>
     )
   }
 }
