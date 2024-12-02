@@ -11,7 +11,7 @@ import fantasyBooks from './data/books/fantasy.json'
 
 class App extends Component {
   state = {
-    selected: false,
+    selected: null,
   }
 
   changeSelected = (bookID) => {
